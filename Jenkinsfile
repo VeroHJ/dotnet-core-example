@@ -2,6 +2,7 @@ pipeline {
     agent {
       label 'slave-node'
     }
+    stages {
         stage('Build') {
             powershell 'dotnet restore'
 
@@ -26,4 +27,5 @@ pipeline {
                 powershell 'dotnet nuget push .\\src\\Conduit\\bin\\Debug\\Conduit.*.nupkg -k 5a46c671-b21a-3810-9b29-c8913bfc4ae4 -s http://localhost:8081/repository/nuget-hosted/'
             }
         }
+    }
 }
